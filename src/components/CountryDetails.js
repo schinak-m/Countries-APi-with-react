@@ -44,88 +44,90 @@ export default function CountryDetails() {
               </button>
             </span>
           </Link>
-          {country.map((item) => (
-            <div
-              key={item.population}
-              className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:place-items-center"
-            >
-              <div>
-                <img alt="flag" src={item.flags.svg} />
-              </div>
-              <div>
-                <h1 className="font-bold text-gray-900 text-4xl mb-8 dark:text-gray-400">
-                  {item.name.official}
-                </h1>
-                <div className="grid lg:grid-cols-2 grid-cols-1 gap-16 dark:text-gray-400">
-                  <div>
-                    <ul className="flex flex-col items-start justify-start gap-2">
-                      <li>
-                        <span className="font-bold">Native Name:</span>{" "}
-                        {
-                          item.name.nativeName[
-                            Object.keys(item.name.nativeName)[0]
-                          ].official
-                        }
-                      </li>
-                      <li>
-                        <span className="font-bold">Population: </span>
-                        {item.population.toLocaleString()}
-                      </li>
-                      <li>
-                        <span className="font-bold">Region: </span>
-                        {item.region}
-                      </li>
-                      <li>
-                        <span className="font-bold">Sub Region: </span>
-                        {item.subregion}
-                      </li>
-                      <li>
-                        <span className="font-bold">Capital: </span>
-                        {item.capital}
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="flex flex-col items-start justify-start gap-2">
-                      <li>
-                        <span className="font-bold">Top Level Domain: </span>{" "}
-                        {item.tld.join(", ")}
-                      </li>
-                      <li>
-                        <span className="font-bold">Currencies: </span>{" "}
-                        {Object.values(item.currencies)
-                          .map((currency) => currency.name)
-                          .join(", ")}
-                      </li>
-                      <li>
-                        <span className="font-bold">Languages: </span>{" "}
-                        {Object.values(item.languages)
-                          .map((language) => language)
-                          .join(", ")}
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="lg:flex">
-                    <h3 className="font-bold">Borders</h3>
-                    {item.borders && item.borders.length > 0 && (
-                      <ul className="flex">
-                        {item.borders.map((border, index) => {
-                          return (
-                            <li
-                              className="bg-white dark:bg-gray-800 dark:text-gray-400 border-2 px-5 lg:mx-2 mr-3 border-gray-200 shadow"
-                              key={index}
-                            >
-                              {border}
-                            </li>
-                          );
-                        })}
+          {country &&
+            country.length > 0 &&
+            country.map((item) => (
+              <div
+                key={item.population}
+                className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:place-items-center"
+              >
+                <div>
+                  <img alt="flag" src={item.flags.svg} />
+                </div>
+                <div>
+                  <h1 className="font-bold text-gray-900 text-4xl mb-8 dark:text-gray-400">
+                    {item.name.official}
+                  </h1>
+                  <div className="grid lg:grid-cols-2 grid-cols-1 gap-16 dark:text-gray-400">
+                    <div>
+                      <ul className="flex flex-col items-start justify-start gap-2">
+                        <li>
+                          <span className="font-bold">Native Name:</span>{" "}
+                          {
+                            item.name.nativeName[
+                              Object.keys(item.name.nativeName)[0]
+                            ].official
+                          }
+                        </li>
+                        <li>
+                          <span className="font-bold">Population: </span>
+                          {item.population.toLocaleString()}
+                        </li>
+                        <li>
+                          <span className="font-bold">Region: </span>
+                          {item.region}
+                        </li>
+                        <li>
+                          <span className="font-bold">Sub Region: </span>
+                          {item.subregion}
+                        </li>
+                        <li>
+                          <span className="font-bold">Capital: </span>
+                          {item.capital}
+                        </li>
                       </ul>
-                    )}
+                    </div>
+                    <div>
+                      <ul className="flex flex-col items-start justify-start gap-2">
+                        <li>
+                          <span className="font-bold">Top Level Domain: </span>{" "}
+                          {item.tld.join(", ")}
+                        </li>
+                        <li>
+                          <span className="font-bold">Currencies: </span>{" "}
+                          {Object.values(item.currencies)
+                            .map((currency) => currency.name)
+                            .join(", ")}
+                        </li>
+                        <li>
+                          <span className="font-bold">Languages: </span>{" "}
+                          {Object.values(item.languages)
+                            .map((language) => language)
+                            .join(", ")}
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="lg:flex">
+                      <h3 className="font-bold">Borders</h3>
+                      {item.borders && item.borders.length > 0 && (
+                        <ul className="flex">
+                          {item.borders.map((border, index) => {
+                            return (
+                              <li
+                                className="bg-white dark:bg-gray-800 dark:text-gray-400 border-2 px-5 lg:mx-2 mr-3 border-gray-200 shadow"
+                                key={index}
+                              >
+                                {border}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </section>
       </div>
     </>
